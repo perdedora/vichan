@@ -1524,7 +1524,7 @@ function purge_old_antispam() {
 function _create_antibot($board, $thread) {
 	global $config, $purged_old_antispam;
 
-	$antibot = new AntiBot([$board, $thread]);
+	$antibot = new AntiBot($config, [$board, $thread]);
 
 	// Delete old expired antispam, skipping those with NULL expiration timestamps (infinite lifetime).
 	if (!isset($purged_old_antispam) && $config['auto_maintenance']) {
@@ -1567,6 +1567,9 @@ function checkSpam(array $extra_salt = array()) {
 	$hash = $_POST['hash'];
 
 	if (!empty($extra_salt)) {
+		if (!is_array($extra_salt)) {
+			$extra_salt = (array) $extra_salt;
+		}
 		// create a salted hash of the "extra salt"
 		$extra_salt = implode(':', $extra_salt);
 	} else {
