@@ -387,13 +387,13 @@
 			'provider_get' => 'securimage.php',
 			// Custom captcha check provider path
 			'provider_check' => 'securimage.php',
-			// Custom captcha extra field (eg. charset)
+			// Custom captcha extra field (eg. charset for cookies)
 			'extra' => 'abcdefghijklmnopqrstuvwxyz',
 			// New thread captcha. Require solving a captcha to post a thread.
 			'new_thread_capt' => false,
 			// Securimage customization options
 			// https://github.com/dapphp/securimage/blob/nextgen/examples/securimage_show_example.php#L49
-			'securimage_options' => ['send_headers' => false, 'no_exit' => true],
+			'securimage_options' => ['send_headers' => false, 'no_exit' => true, 'charset' => 'abcdefghijkmnopqrstuvwxzyABCDEFGHJKLMNPQRSTUVWXZY0123456789'],
 			// Captcha expires (in seconds)
 			'expires_in' => 320
 		]
